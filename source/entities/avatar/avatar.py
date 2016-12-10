@@ -5,5 +5,4 @@ class Avatar(controller.Controller, model.Model, view.View):
         controller.Controller.__init__(self)
         model.Model.__init__(self)
         view.View.__init__(self)
-
         self.hectare = hectare
