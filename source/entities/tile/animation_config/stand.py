@@ -4,16 +4,16 @@ stand_data = {
     "animations" : [
         {
             "direction" : "north",
-            "frames" : [('000.png', 0.1)]
+            "frames" : [('2.png', 1)]
         },{
             "direction" : "east",
-            "frames" : [('000.png', 0.1)]
+            "frames" : [('1.png', 1)]
         },{
             "direction" : "south",
-            "frames" : [('000.png', 0.1)]
+            "frames" : [('3.png', 1)]
         },{
             "direction" : "west",
-            "frames" : [('000.png', 0.1)]
+            "frames" : [('4.png', 1)]
         }
     ]
 }

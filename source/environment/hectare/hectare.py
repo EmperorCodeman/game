@@ -9,6 +9,7 @@ class Hectare:
     avatar          = None
     rock            = None
     __tiles         = [[None]]
+    alreadyRendered = []
 
     def __init__(self):
         self.avatar = avatar.Avatar(self)
@@ -35,6 +36,7 @@ class Hectare:
     
     def populate_ground_tiles(self):
         self.__tiles = [[None for x in range(self.size)] for y in range(self.size)]
+
         pass
     
     def get_tiles(self, a):
@@ -76,7 +78,7 @@ class Hectare:
                 if t != None:
                     if camera.in_viewport(t):
                         t.on_render(camera)
-            
+
         for entity in self.entities:
             entity.on_render(
                 camera

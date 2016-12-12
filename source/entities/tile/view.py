@@ -1,6 +1,5 @@
 from source.abstract.entities.inanimate import view
 from source.action import action
-
 from animation_config import stand
 
 import random
@@ -14,8 +13,10 @@ class View(view.View):
         pass
 
     def on_render(self, camera):
+
+
         if self.animation == None or self.animation.action != "stand":
             self.animation = action.Action(stand.stand_data)
-        self.animation.on_render(camera, self)
+        self.animation.on_render_NoMovement(camera, self)
         pass
 

@@ -24,34 +24,33 @@ class Model(model.Model):
     def walk(self):
         self.move_state = MoveState.WALK
         pass
-    def pickUp(self, object):
-        #if your not holding something and your within distance pick it up
-        if not object:
+    def pick_up(self, object):
+        #if you are not holding something and your within distance pick it up
+        if object == None:
             print "error picked up a NONE type object"
-
-        if self.testIfInRange(
-            object.position, self.position, 40
+        close_enough = 40
+        if self.reachable(
+            object.position, self.position, close_enough
         ):
             self.holding = object
             object.position.x = self.position.x #+ 20
+            #offset y to not block face
             object.position.y = self.position.y + 20
             object.position.z = self.position.z
-    def testIfInRange(self, pygameVector, pygameVector2, acceptableRange):
-        x = pygameVector.x
-        y = pygameVector.y
-        z = pygameVector.z
-        x2 = pygameVector2.x
-        y2 = pygameVector2.y
-        z2 = pygameVector2.z
-        #take radius
-        #acceptableRange /= 2
+    def reachable(self, pygameVector, pygameVector2, acceptableRange):
         #ensure that x axis values are within accepatable range of eachother
-        if (x + acceptableRange) > x2 and (x - acceptableRange) < x2:
-           if (y + acceptableRange) > y2 and (y - acceptableRange) < y2:
-               if (z + acceptableRange) > z2 and (z - acceptableRange) < z2:
-                   return True
-               else:
-                   return False
+        return     (pygameVector.x + acceptableRange) > pygameVector2.x \
+               and (pygameVector.x - acceptableRange) < pygameVector2.x \
+               and (pygameVector.y + acceptableRange) > pygameVector2.y \
+               and (pygameVector.y - acceptableRange) < pygameVector2.y \
+               and (pygameVector.z + acceptableRange) > pygameVector2.z \
+               and (pygameVector.z - acceptableRange) < pygameVector2.z
+
+    def updateAggregatedObjects(self):
+        if self.holding:
+            self.holding.position.x = self.position.x
+            self.holding.position.y = self.position.y + 20
+            self.holding.position.z = self.position.z
 
 
 

@@ -62,16 +62,8 @@ class Controller(controller.Controller):
                     self.holding = None
                 else:
                     #UPDATE TO BE ABLE TO PICK UP ALGEBRAICLY
-                    self.pickUp(self.hectare.rock)
-        def updateAggregatedObjects(self):
-            if self.holding:
-                self.holding.position.x = self.position.x
-                self.holding.position.y = self.position.y + 20
-                self.holding.position.z = self.position.z
+                    self.pick_up(self.hectare.rock)
 
-        #if keyboard.KEYBOARD.RETURN == False:
-        #    self.holding = None
-        #pass
-        updateAggregatedObjects(self)
+        self.updateAggregatedObjects()
         self.translate()
         pass

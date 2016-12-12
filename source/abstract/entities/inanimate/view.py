@@ -1,6 +1,5 @@
 import pygame
 
-from source.action import action
 from source.abstract.entities.entity import view
 
 from animation_config import stand
